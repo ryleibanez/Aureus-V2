@@ -13,12 +13,21 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->string('pdname');
-            $table->string('pdimage');
-            $table->string('price');
-            $table->string('quantity');
-            $table->string('totalprice');
+            $table->bigInteger('transactionid');
             $table->string('email');
+            $table->bigInteger('product_id');
+            $table->longText('pdname');
+            $table->longText('pdimage');
+            $table->integer('quantity');
+            $table->double('price');
+            $table->double('totalprice');
+            $table->longText('orderstatus');
+            $table->longText('address');
+            $table->longText('country');
+            $table->longText('modeofpayment');
+            $table->longText('deliverydate');
+            $table->string('deliveryfee', 45);
+            $table->timestamps();
         });
     }
 
