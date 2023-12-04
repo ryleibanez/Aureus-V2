@@ -15,6 +15,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\AboutController;
 use App\Http\Middleware\buynowMiddleware;
 use App\Http\Middleware\SigninMiddleware;
 
@@ -117,6 +118,7 @@ Route::get('/searchProduct', [ProductController::class, 'searchProduct'])->name(
 Route::get('/categoryProduct', [ProductController::class, 'searchProduct'])->name('categoryProduct');
 
 Route::get('/category', [ProductController::class, 'category'])->name('category');
+Route::get('/about', [AboutController::class, 'index'])->name('about');
 
 
 

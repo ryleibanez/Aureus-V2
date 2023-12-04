@@ -41,7 +41,7 @@
                                 <div class="col-lg-3 col-md-12">
 
                                     <!--====== Dashboard Features ======-->
-                                    @include('includes.dashmenu');
+                                    @include('includes.dashmenu')
 
                                     <!--====== End - Dashboard Features ======-->
                                 </div>

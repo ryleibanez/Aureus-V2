@@ -6,14 +6,9 @@
 
 
 
-    <!--====== Main App ======-->
-    <div id="app">
+   
 
 
-
-
-        <!--====== App Content ======-->
-        <div class="app-content">
 
             <!--====== Section 1 ======-->
             <div class="u-s-p-y-60">

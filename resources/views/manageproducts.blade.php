@@ -4,10 +4,7 @@
 @section('content')
 
 <style>
-    .select-box{
-        margin: auto;
-        justify-content: center;
-    }
+    
 </style>
     <!-- Search Bar -->
     <div class="search-container">
@@ -17,18 +14,7 @@
         <button class="btn add-product-btn" onclick="window.location.href='{{ route('addProduct') }}'">Add Product</button>
 
     </div>
-    <div class="select-box">
-
-        <label class="u-s-m-r-8" for="my-order-sort">Show:</label><select
-           id="filter-order">
-            <option value="{{URL('/myorders?filter=All')}}" >All Orders</option>
-            <option value="{{URL('/myorders?filter=Pending')}}"  selected >Pending</option>
-            <option value="{{URL('/myorders?filter=Processing')}}"  selected >Processing</option>
-            <option value="{{URL('/myorders?filter=Shipped')}}" selected >Shipped</option>
-            <option value="{{URL('/myorders?filter=Delivered')}}"  selected >Delivered</option>
-            <option value="{{URL('/myorders?filter=Cancelled')}}" selected >Cancelled</option>
-        </select>
-    </div>
+    
 
     {{-- <!-- Products Table -->
     <div class="table-container">

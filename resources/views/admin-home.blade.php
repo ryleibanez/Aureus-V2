@@ -154,19 +154,15 @@
         <div class="container1">
             <div class="navbar">
                 <div class="logo">
-                    <a href="index.html"><img src="images/main-logo/header-logo.png" alt="logo" style="width: 150px !important;"></a>
+                    <a href="index"><img src="images/main-logo/header-logo.png" alt="logo" style="width: 150px !important;"></a>
                 </div>
                 
                 <nav>
                     <ul id="MenuItems">
-                        <li><a href="admin-home.html">Home</a></li>
-                        <li><a href="manageproducts.html">Manage Products</a></li>
-                        <li><a href="manageorders.html">Manage Orders</a></li> 
-                        <li><a href="admin-profile.html">Profile</a></li>                  
-                        <li>
-                            <a href="admin-login.html"  >Login</a>
-                         
-                        </li>
+                        <li><a href="adminhome">Home</a></li>
+                        <li><a href="manageproducts">Manage Products</a></li>
+                        <li><a href="manageorders">Manage Orders</a></li> 
+                        <li><a href="myprofile">Profile</a></li>                  
                     </ul>
                 </nav>
                 
@@ -177,7 +173,7 @@
                 </div>
                 
                 <div class="search-overlay" id="searchOverlay" onclick="closeSearchOverlay()">
-                   <form method="get" action="productsearch.html">
+                   <form method="get" action="productsearch">
                     <div class="search-box" onclick="event.stopPropagation();">
                         
                         <input type="text" placeholder="Search..." name="search">
