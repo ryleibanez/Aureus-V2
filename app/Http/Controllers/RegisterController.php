@@ -81,7 +81,7 @@ class RegisterController extends Controller
         $data['address'] = $request->address;
         $data['country'] = $request->country;
         $data['secQuestion'] = $request->secQuestion;
-        $data['code'] = $request->code;
+        $data['code'] = '';
         $data['type'] = $request->type;
         $data['secAnswer'] = Hash::make($request->secAnswer);
         $data['profilepic'] =  "uploads/" . $fileName;
