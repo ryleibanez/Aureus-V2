@@ -236,7 +236,7 @@
 
 </head>
 
-<body>
+<body style="display: flex; flex-direction: column; min-height: 100vh; margin: 0;">
     <button type="button" class="btn btn-primary" id="myButton" onclick="playAudio()"
         style="display: none;">Button</button>
     @if (!request()->is(['addProduct', 'editProduct']))
@@ -297,17 +297,8 @@
 
     @yield('content')
 
-
-
-
-
-
-
-
-
-
     <!-- Footer -->
-    <div class="footer">
+    <div class="footer" style="margin-top: auto;">
         <div class="container1">
             <div class="row1">
 
@@ -315,8 +306,6 @@
                     <img src="images/main-logo/header-logo.png">
 
                 </div>
-
-
             </div>
             <hr>
             <p class="copyright">Copyright 2023 - Group 1 - 4ITD</p>
