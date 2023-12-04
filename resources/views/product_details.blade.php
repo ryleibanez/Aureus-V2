@@ -70,17 +70,15 @@
                 .then(data => {
 
                     var check = data.status;
-
+                    
                     if (check === "success") {
                         window.location.href = "/buynow?id=" + id;
                     } else {
-
+                        window.location.href = "/signin";
                     }
-
-
-
                 })
                 .catch(error => {
+                    window.location.href = "/signin";
                     console.error('Error fetching cart count:', error);
                 });
         }
