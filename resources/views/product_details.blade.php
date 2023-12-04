@@ -49,12 +49,13 @@
                         @if ($items->stocks > 0)
                             <a class="btn" style="cursor: pointer;" onclick="addtocart('{{ $items->id }}')">Add To Cart</a>
                         @endif
-                    @endauth
+                    
                     @if ($items->stocks > 0)
                         <a onclick="createbuy({{ $items->id }});" style="cursor: pointer;" class="btn">Buy Now</a>
                         @else
                         <p style="color: red; font-weight: bold">Out of Stock</p>
                     @endif
+                    @endauth
                     <h3>Product Details <i class="fa fa-indent"></i></h3>
                     <br>
 
@@ -74,11 +75,9 @@
                     if (check === "success") {
                         window.location.href = "/buynow?id=" + id;
                     } else {
-                        window.location.href = "/signin";
                     }
                 })
                 .catch(error => {
-                    window.location.href = "/signin";
                     console.error('Error fetching cart count:', error);
                 });
         }
