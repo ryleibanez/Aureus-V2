@@ -17,11 +17,6 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 
-
-
-
-
-
     @if (request()->is(['myaccount', 'myprofile', 'editprofile', 'myaddress', 'editaddress', 'myorders', 'addAddress']))
     <!--====== Google Font ======-->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet">
@@ -257,11 +252,13 @@
         .toast-body {
             margin-top: 10px;
         }
+
     </style>
 
 </head>
 
 <body>
+    @include('includes.navbar')
     <button type="button" class="btn btn-primary" id="myButton" onclick="playAudio()"
         style="display: none;">Button</button>
     @if (request()->is(['checkout', 'checkoutorder', 'cartcheckout']))
