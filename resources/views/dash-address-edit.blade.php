@@ -1,6 +1,22 @@
 @extends('includes.layout')
 @section('title', 'Edit Address')
+<style>
+    body,
+    html {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        font-family: 'Poppins', sans-serif;
+        overflow-x: hidden;
+        /* Optional: Hide horizontal scrollbar */
+    }
 
+    .u-s-p-b-60 {
+        min-height: 64%;
+        display: flex;
+        flex-direction: column;
+    }
+</style>
 @section('content')
     <div class="preloader is-active">
         <div class="preloader__wrap">

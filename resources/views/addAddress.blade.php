@@ -1,15 +1,24 @@
 @extends('includes.layout')
 @section('title', 'Add an Address')
-    
+<style>
+    body,
+    html {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        font-family: 'Poppins', sans-serif;
+        overflow-x: hidden;
+        /* Optional: Hide horizontal scrollbar */
+    }
+
+    .u-s-p-b-60 {
+        min-height: 64%;
+        display: flex;
+        flex-direction: column;
+    }
+</style>
 @section('content')
     
-
-<!--====== Main App ======-->
-<div id="app">
-
-
-    <!--====== App Content ======-->
-    <div class="app-content">
         <!--====== Section 1 ======-->
         <div class="u-s-p-y-60">
             <!--====== Section Content ======-->

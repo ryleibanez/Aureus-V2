@@ -1,6 +1,22 @@
 @extends('includes.layout')
 @section('title', 'Cart')
 @section('content')
+<style>
+    body, html {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .small-container {
+        min-height: 44%;
+        display: justify;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    </style>
 <br><br><br><br><br><br>
 <!-- Cart items details -->
 <div class="small-container cart-page">

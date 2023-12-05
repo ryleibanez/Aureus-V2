@@ -2,7 +2,23 @@
 @section('title', 'My Orders')
 @section('content')
 
+<style>
+    body,
+    html {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        font-family: 'Poppins', sans-serif;
+        overflow-x: hidden;
+        /* Optional: Hide horizontal scrollbar */
+    }
 
+    .u-s-p-b-60 {
+        min-height: 64%;
+        display: flex;
+        flex-direction: column;
+    }
+</style>
 
 
     <div class="preloader is-active">
@@ -11,15 +27,6 @@
             <img class="preloader__img" src="images/preloader.png" alt="">
         </div>
     </div>
-
-    <!--====== Main App ======-->
-    <div id="app">
-
-
-
-
-        <!--====== App Content ======-->
-        <div class="app-content">
 
             <!--====== Section 1 ======-->
             <div class="u-s-p-y-60">
