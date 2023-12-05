@@ -21,6 +21,7 @@
         padding: 20px;
         text-align: center;
     }
+
     .categories {
         display: flex;
         flex-direction: column;
@@ -28,47 +29,54 @@
         text-align: center;
     }
 
-    .title {
-        
-    }
+    .title{
+    text-align: center;
+    margin: 0 auto 0px;
+    position: relative;
+    line-height: 60px;
+    color: #555;
+}
 
     .centered-content {
         margin-top: 0px;
     }
 </style>
-            <div class="small-container">
-                <div class="categories">
-                    <h2 class="title">About us</h2>
+<div class="small-container">
+    <div class="categories">
+        <h2 class="title">About us</h2>
+        <figure>
+            <img src="images/perfumehome_2.png" alt="signup image" style="width: 30%; height: auto;">
+        </figure>
 
-                    <div class="centered-content">
-                        <p>
-                            At Aureus, we're passionate about curating an exquisite collection of perfumes that
-                            transcend ordinary fragrances. Our platform is a curated destination for fragrance
-                            enthusiasts, offering a meticulously selected range of global brands and artisanal scents.
-                        </p>
+        <div class="centered-content">
+            <p>
+                At Aureus, we're passionate about curating an exquisite collection of perfumes that
+                transcend ordinary fragrances. Our platform is a curated destination for fragrance
+                enthusiasts, offering a meticulously selected range of global brands and artisanal scents.
+            </p>
 
-                        <p>
-                            Discover the essence of luxury and individuality as we guide you through a sensory journey
-                            to find your perfect fragrance. Join us in exploring the captivating world of perfumery at
-                            Aureus Perfume eCommerce.
-                        </p>
-                    </div>
-                    <br>
-                    <div class="centered-content">
-                        <h3>Contact Us</h3>
-                        <p>Thank you for your interest in Aureus Perfume eCommerce. We're here to assist you. Please
-                            feel free to reach out to us through any of the following contact methods:</p>
+            <p>
+                Discover the essence of luxury and individuality as we guide you through a sensory journey
+                to find your perfect fragrance. Join us in exploring the captivating world of perfumery at
+                Aureus Perfume eCommerce.
+            </p>
+        </div>
+        <br>
+        <div class="centered-content">
+            <h3>Contact Us</h3>
+            <p>Thank you for your interest in Aureus Perfume eCommerce. We're here to assist you. Please
+                feel free to reach out to us through any of the following contact methods:</p>
 
-                        <ul>
-                            <li>Phone: +639349057437 (Mon-Fri, 9:00 AM - 5:00 PM)</li>
-                            <li>Email: aureusperfume@gmail.com</li>
-                        </ul>
-                    </div>
-                </div>
+            <ul>
+                <li>Phone: +639349057437 (Mon-Fri, 9:00 AM - 5:00 PM)</li>
+                <li>Email: aureusperfume@gmail.com</li>
+            </ul>
+        </div>
+    </div>
 
 
-            </div>
-            <!--====== End - Section 2 ======-->
+</div>
+<!--====== End - Section 2 ======-->
 
 
 
