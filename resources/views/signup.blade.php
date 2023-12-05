@@ -8,6 +8,8 @@
 
     <!-- Font Icon -->
     <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 
     <!-- Main css -->
     <link rel="stylesheet" href="css/style.css">
@@ -88,7 +90,7 @@ select {
                                 <input type="email" name="email" id="email" placeholder="Your Email" required  title=""/>
 
                                 @error('email')
-                                    <span class="text-danger">{{ $message }}</span>
+                                    <span class="text-danger"  style="display: none;">{{ $message }}</span>
                                 @enderror
 
                             </div>
@@ -104,7 +106,7 @@ select {
                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"  pattern="^(\+63|0)[1-9]\d{9}$" minlength="11" maxlength="11" required  title="Enter a correct phone number that is based here in the Philippines."/>
                             </div>
                             @error('mobilenumber')
-                                <span class="text-danger">{{ $message }}</span>
+                                <span class="text-danger"  style="display: none;">{{ $message }}</span>
                             @enderror
                             <div class="form-group">
                                 <label for="pass"><i class="zmdi zmdi-lock"></i></label>
@@ -139,7 +141,7 @@ select {
 
                             </div>
                             @error('secAnswer')
-                                <span class="text-danger">{{ $message }}</span>
+                                <span class="text-danger" style="display: none;">{{ $message }}</span>
                             @enderror
                             <input type="hidden" value="Philippines" name="country">
                             <input type="hidden" value="" name="code">
@@ -168,6 +170,38 @@ select {
     </div>
 
     <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Check if there are any validation errors in the DOM
+            var validationErrors = document.querySelectorAll('.text-danger');
+    
+            if (validationErrors.length > 0) {
+                // Extract and display each validation error message
+                validationErrors.forEach(function (errorElement) {
+                    var errorMessage = errorElement.innerText;
+    
+                    // Show a toast notification for each validation error
+                    Toastify({
+                        text: errorMessage,
+                        duration: 3000,
+
+
+                        close: true,
+                        gravity: "bottom", // `top` or `bottom`
+                        position: "right", // `left`, `center` or `right`
+                        stopOnFocus: true, // Prevents dismissing of toast on hover
+                        style: {
+                            background: "red",
+                        }
+                    }).showToast();
+                });
+            }
+        });
+    </script>
+
+    <script>
+
+
+        
         function handleImageChange() {
             const input = document.getElementById('image-input');
             const image = document.getElementById('selected-image');
