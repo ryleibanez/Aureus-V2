@@ -50,13 +50,13 @@
 
 <div class="search-container">
 
-    <label class="u-s-m-r-8" for="my-order-sort">Show: </label><select id="filter-order">
-        <option value="{{URL('/myorders?filter=All')}}">All Orders</option>
-        <option value="{{URL('/myorders?filter=Pending')}}" selected>Pending</option>
-        <option value="{{URL('/myorders?filter=Processing')}}" selected>Processing</option>
-        <option value="{{URL('/myorders?filter=Shipped')}}" selected>Shipped</option>
-        <option value="{{URL('/myorders?filter=Delivered')}}" selected>Delivered</option>
-        <option value="{{URL('/myorders?filter=Cancelled')}}" selected>Cancelled</option>
+    <label class="u-s-m-r-8" for="my-order-sort">Show: </label><select id="filter-order" onchange="changeFilter()">
+        <option value="{{URL('/manageorders?filter=All')}}" @if(request()->query('filter') === 'All') selected @endif>All Orders</option>
+        <option value="{{URL('/manageorders?filter=Pending')}}" @if(request()->query('filter') === 'Pending') selected @endif>Pending</option>
+        <option value="{{URL('/manageorders?filter=Processing')}}" @if(request()->query('filter') === 'Processing') selected @endif>Processing</option>
+        <option value="{{URL('/manageorders?filter=Shipped')}}" @if(request()->query('filter') === 'Shipped') selected @endif>Shipped</option>
+        <option value="{{URL('/manageorders?filter=Delivered')}}" @if(request()->query('filter') === 'Delivered') selected @endif>Delivered</option>
+        <option value="{{URL('/manageorders?filter=Cancelled')}}" @if(request()->query('filter') === 'Cancelled') selected @endif>Cancelled</option>
     </select>
 </div>
 
@@ -119,8 +119,9 @@
     <div style="align-content: center">
         @php
         $mode = request()->query('mode');
+        $filter = request()->query('filter');
         @endphp
-        {{ $orders->links() }}
+        {{ $orders->appends(['filter' => $filter])->links() }}
 
     </div>
 </div>
@@ -323,10 +324,17 @@
             });
 
     }
-    var page = "{{ request()->query('page') }}"
+    var page = "{{ request()->query('page') }}";
+    var filter = "{{ request()->query('filter') }}";
+
+
+    function changeFilter(){
+        var val = document.getElementById('filter-order').value;
+        window.location.href = val;
+    }
 
     function updateInfo() {
-        fetch('/vieworder?page=' + page)
+        fetch('/vieworder?page=' + page + "&filter=" + filter)
             .then(response => response.text())
             .then(data => {
 

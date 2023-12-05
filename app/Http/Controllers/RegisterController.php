@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\notificationModel;
 use App\Models\User;
 use Dotenv\Validator as DotenvValidator;
 
@@ -89,6 +90,12 @@ class RegisterController extends Controller
         $create = User::create($data);
 
         if ($create) {
+
+            notificationModel::create([
+                'email' => $request->email,
+                'message' => 'Hi '. $request->fname. '! Welcome to Aureus.',
+                'status' => 'false'
+        ]);
             $credentials = $request->only('email', 'password');
             Auth::attempt($credentials);
             return Redirect(route('index'));

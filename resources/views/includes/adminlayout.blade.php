@@ -244,36 +244,40 @@
             <div class="container1">
                 <div class="navbar">
                     <div class="logo">
-                        <a href="index.html"><img src="images/main-logo/header-logo.png" alt="logo"
-                                style="width: 100px !important;"></a>
+                        <a href="index"><img src="images/main-logo/header-logo.png" alt="logo" style="width: 150px !important;"></a>
                     </div>
-
+                    
                     <nav>
                         <ul id="MenuItems">
                             <li><a href="{{ route('adminhome') }}">Home</a></li>
                             <li><a href="{{ route('manageproducts') }}">Manage Products</a></li>
                             <li><a href="{{ route('manageorders') }}">Manage Orders</a></li>
-
+                           
                             <li>
-                                <a href="{{ route('signin') }}">LOGOUT</a>
+                                <a href="{{ route('signin') }}">Logout</a>
 
                             </li>
+                                           
                         </ul>
                     </nav>
-
-
-
-                    <div class="search-overlay" id="searchOverlay" onclick="closeSearchOverlay()">
-                        <form method="get" action="productsearch.html">
-                            <div class="search-box" onclick="event.stopPropagation();">
-
-                                <input type="text" placeholder="Search..." name="search">
-                                &nbsp;<i class="fas fa-search search-icon"></i>
-                            </div>
-                        </form>
+                    
+                    <div class="search-icon" onclick="openSearchOverlay()">
+                        <a href="#">
+                        <i class="fas fa-search search-icon"></i>
+                    </a>
                     </div>
-
-
+                    
+                    <div class="search-overlay" id="searchOverlay" onclick="closeSearchOverlay()">
+                       <form method="get" action="productsearch">
+                        <div class="search-box" onclick="event.stopPropagation();">
+                            
+                            <input type="text" placeholder="Search..." name="search">
+                            &nbsp;<i class="fas fa-search search-icon"></i>
+                        </div>
+                    </form>
+                    </div>
+                    
+                   
                     <img src="images/menu.png" class="menu-icon" onclick="menutoggle()">
                 </div>
                 @if (request()->is('adminhome'))

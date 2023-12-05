@@ -75,6 +75,8 @@ Route::get('/myaccount', [AccountController::class, 'account'])->name('myaccount
 
 //My Profile
 Route::get('/myprofile', [ProfileController::class, 'myprofile'])->name('myprofile')->middleware(['auth','buynowChecker']);
+Route::get('/adminprofile', [ProfileController::class, 'myprofile'])->name('adminprofile')->middleware(['auth','buynowChecker']);
+
 //Edit Profile
 Route::get('/editprofile', [ProfileController::class, 'editProfilePage'])->name('editProfile')->middleware(['auth','buynowChecker']);
 Route::post('/editprofile', [ProfileController::class, 'updateProfile'])->name('editprofile.post')->middleware(['auth','buynowChecker']);

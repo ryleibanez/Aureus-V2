@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Validator;
 
 class ProfileController extends Controller
 {
+    
     //
     public function myprofile(Request $request)
     {

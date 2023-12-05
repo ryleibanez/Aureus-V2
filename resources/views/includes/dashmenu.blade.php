@@ -4,7 +4,11 @@
         <img src="{{ auth()->user()->profilepic}}" style="display:block; width: 150px; height:150px; margin:auto; margin-bottom: 1rem; border-radius: 50%;"/>
         <span class="dash__text u-s-m-b-16" style="text-align: center;">Hello, {{ auth()->user()->fname }}
             {{ auth()->user()->lname }}</span>
-        <ul class="dash__f-list">
+        
+        @if(request()->is('adminprofile'))
+
+        @else
+            <ul class="dash__f-list">
             
             <li>
 
@@ -27,5 +31,7 @@
 
 
         </ul>
+
+        @endif
     </div>
 </div>

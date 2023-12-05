@@ -143,17 +143,34 @@ class AdminController extends Controller
     }
 
 
-    public function viewOrder()
+    public function viewOrder(Request $request)
     {
-        $orders = Order::orderBy('created_at', 'desc')->paginate(5);
+        $filter = $request->query('filter') ?? 'All';
 
+        $validFilters = ['All', 'Pending', 'Processing', 'Shipped', 'Delivered', 'Cancelled']; // Add other valid filters
+        $filter = in_array($filter, $validFilters) ? $filter : 'All';
+    
+        $orders = Order::when($filter !== 'All', function ($query) use ($filter) {
+                $query->where('orderstatus', $filter);
+            })
+            ->orderBy('created_at', 'desc')
+            ->paginate(5);
 
         return view('includes.manageorderview', compact('orders'));
     }
 
-    public function manageOrderPage()
+    public function manageOrderPage(Request $request)
     {
-        $orders = Order::orderBy('created_at', 'desc')->paginate(5);
+        $filter = $request->query('filter') ?? 'All';
+
+        $validFilters = ['All', 'Pending', 'Processing', 'Shipped', 'Delivered', 'Cancelled']; // Add other valid filters
+        $filter = in_array($filter, $validFilters) ? $filter : 'All';
+    
+        $orders = Order::when($filter !== 'All', function ($query) use ($filter) {
+                $query->where('orderstatus', $filter);
+            })
+            ->orderBy('created_at', 'desc')
+            ->paginate(5);
 
         return view('manageorders', compact('orders'));
     }

@@ -55,7 +55,7 @@ class ProductController extends Controller
         $pd = Products::where('pdname', 'like', '%' . $search . '%')->orderBy('id', 'desc')->paginate(8);
 
         if ($request->is('categoryProduct')) {
-            $pd = Products::where('category', 'like', '%' . $search . '%')->orderBy('id', 'desc')->paginate(8);
+            $pd = Products::where('category', 'like',$search)->orderBy('id', 'desc')->paginate(8);
         }
         // Append the filter parameter to the pagination links
         $pd->appends(['search' => $search]);
