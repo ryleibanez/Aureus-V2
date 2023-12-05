@@ -8,7 +8,7 @@
             <h1>Feel elegant with our <br>luxury perfumes</h1>
             <p>Discover our offered luxury fragrances from well-known and trusted brands.
             </p>
-            <a href="" class="btn">Explore Now &#8594;</a>
+            <a href="/products" class="btn">Explore Now &#8594;</a>
 
 
         </div>
