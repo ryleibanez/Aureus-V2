@@ -1,6 +1,25 @@
 @extends('includes.layout')
 @section('title', 'Search Product')
+<style>
+    html,
+    body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
 
+    body {
+        display: flex;
+        flex-direction: column;
+        margin-top: 0;
+    }
+
+
+    .footer {
+        padding: 20px;
+        text-align: center;
+    }
+</style>
 @section('content')
 
     <!-- All Products -->
