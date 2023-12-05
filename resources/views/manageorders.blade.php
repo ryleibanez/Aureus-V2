@@ -37,15 +37,35 @@
             border-radius: 3px;
         }
 
-        /* Styles for the close button */
-        .popup-close {
-            text-align: right;
-        }
-    </style>
-    <!-- Search Bar -->
-    <div class="search-container">
-        <input type="text" placeholder="Search Transaction Id" id="search">
-        <button class="btn" onclick="searchNow();">Search</button>
+    /* Styles for the close button */
+    .popup-close {
+        text-align: right;
+    }
+</style>
+<!-- Search Bar -->
+<div class="search-container">
+    <input type="text" placeholder="Search Transaction Id" id="search">
+    <button class="btn" onclick="searchNow();">Search</button>
+</div>
+
+<div class="search-container">
+
+    <label class="u-s-m-r-8" for="my-order-sort">Show: </label><select id="filter-order" onchange="filterOptions()">
+        <option value="{{URL('/manageorders?filter=All')}}" @if(request()->query('filter') === 'All') selected @endif>All Orders</option>
+        <option value="{{URL('/manageorders?filter=Pending')}}"@if(request()->query('filter') === 'Pending') selected @endif >Pending</option>
+        <option value="{{URL('/manageorders?filter=Processing')}}" @if(request()->query('filter') === 'Processing') selected @endif >Processing</option>
+        <option value="{{URL('/manageorders?filter=Shipped')}}" @if(request()->query('filter') === 'Shipped') selected @endif >Shipped</option>
+        <option value="{{URL('/manageorders?filter=Delivered')}}" @if(request()->query('filter') === 'Delivered') selected @endif>Delivered</option>
+        <option value="{{URL('/manageorders?filter=Cancelled')}}" @if(request()->query('filter') === 'Cancelled') selected @endif>Cancelled</option>
+    </select>
+</div>
+
+<div class="popup-container" id="popupContainer" style="display: none;">
+    <div class="popup-form">
+        <span class="popup-close" id="closePopup" onclick="closePopup()" style="cursor: pointer;">X</span>
+        <label for="deliveryFee">Delivery Fee:</label>
+        <input type="number" id="deliveryFee" class="popup-input" required>
+        <button id="saveFee" onclick="setDelfee()">Save</button>
     </div>
 
 
@@ -119,12 +139,114 @@
 
 
 
-    <!-- javascript -->
-    <script>
-        function searchNow()
-        {
-            var search =document.getElementById('search').value;
-            window.location.href="/searchOrder?search=" + search;
+<!-- javascript -->
+<script>
+
+    function filterOptions(){
+       var val = document.getElementById('filter-order').value;
+
+       window.location.href=val;
+    }
+
+    function searchNow() {
+        var search = document.getElementById('search').value;
+        window.location.href = "/searchOrder?search=" + search;
+    }
+    function delivered(id) {
+
+        fetch('/delivered?id=' + id)
+            .then(response => response.json())
+            .then(data => {
+
+                var check = data.status;
+
+                if (check === "success") {
+                    Toastify({
+                        text: "Order Has Been Successfully Delivered.",
+                        duration: 3000,
+
+
+                        close: true,
+                        gravity: "bottom", // `top` or `bottom`
+                        position: "right", // `left`, `center` or `right`
+                        stopOnFocus: true, // Prevents dismissing of toast on hover
+                        style: {
+                            background: "linear-gradient(to right, #00b09b, #96c93d)",
+                        }
+                    }).showToast();
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching cart count:', error);
+            });
+    }
+
+    function shipped(id) {
+
+        fetch('/shipped?id=' + id)
+            .then(response => response.json())
+            .then(data => {
+
+                var check = data.status;
+
+                if (check === "success") {
+                    Toastify({
+                        text: "Order Has Been Successfully Shipped.",
+                        duration: 3000,
+
+
+                        close: true,
+                        gravity: "bottom", // `top` or `bottom`
+                        position: "right", // `left`, `center` or `right`
+                        stopOnFocus: true, // Prevents dismissing of toast on hover
+                        style: {
+                            background: "linear-gradient(to right, #00b09b, #96c93d)",
+                        }
+                    }).showToast();
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching cart count:', error);
+            });
+    }
+    let currentTransactionId; // To store the current transaction ID
+
+    // Function to open the popup and set the transaction ID
+    function openPopup(transactionId) {
+        currentTransactionId = transactionId;
+        const popupContainer = document.getElementById('popupContainer');
+        popupContainer.style.display = 'flex'; // Display as flex to center vertically
+    }
+
+    // Function to open the popup and set the transaction ID
+    function openPopup1(transactionId) {
+        currentTransactionId = transactionId;
+        const popupContainer = document.getElementById('popupContainer1');
+        popupContainer.style.display = 'flex'; // Display as flex to center vertically
+    }
+
+
+
+    // Function to close the popup
+    function closePopup() {
+        const popupContainer = document.getElementById('popupContainer');
+        popupContainer.style.display = 'none';
+    }
+
+    function closePopup1() {
+        const popupContainer = document.getElementById('popupContainer1');
+        popupContainer.style.display = 'none';
+    }
+
+    function setDelDate() {
+        const deliveryDateInput = document.getElementById('deliveryDate');
+        const selectedDate = new Date(deliveryDateInput.value);
+        const currentDate = new Date();
+
+        if (selectedDate < currentDate) {
+            // The selected date is in the past
+            alert("Please select a date that is today or in the future.");
+            return;
         }
         function delivered(id) {
 
@@ -140,19 +262,111 @@
                             duration: 3000,
 
 
-                            close: true,
-                            gravity: "bottom", // `top` or `bottom`
-                            position: "right", // `left`, `center` or `right`
-                            stopOnFocus: true, // Prevents dismissing of toast on hover
-                            style: {
-                                background: "linear-gradient(to right, #00b09b, #96c93d)",
-                            }
-                        }).showToast();
-                    }
-                })
-                .catch(error => {
-                    console.error('Error fetching cart count:', error);
-                });
+                        close: true,
+                        gravity: "bottom", // `top` or `bottom`
+                        position: "right", // `left`, `center` or `right`
+                        stopOnFocus: true, // Prevents dismissing of toast on hover
+                        style: {
+                            background: "linear-gradient(to right, #00b09b, #96c93d)",
+                        }
+                    }).showToast();
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching cart count:', error);
+            });
+
+        closePopup1(); // Close the popup after saving
+    }
+    // Function to set the delivery fee
+    function setDelfee() {
+        const deliveryFeeInput = document.getElementById('deliveryFee');
+        const deliveryFee = deliveryFeeInput.value;
+        // Use the currentTransactionId and deliveryFee as needed, e.g., for further processing or sending to a server.
+        fetch('/setDeliveryFee?id=' + currentTransactionId + "&fee=" + deliveryFee)
+            .then(response => response.json())
+            .then(data => {
+
+                var check = data.status;
+
+                if (check === "success") {
+                    Toastify({
+                        text: "Delivery Fee Has Been Set Successfully.",
+                        duration: 3000,
+
+
+                        close: true,
+                        gravity: "bottom", // `top` or `bottom`
+                        position: "right", // `left`, `center` or `right`
+                        stopOnFocus: true, // Prevents dismissing of toast on hover
+                        style: {
+                            background: "linear-gradient(to right, #00b09b, #96c93d)",
+                        }
+                    }).showToast();
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching cart count:', error);
+            });
+
+        closePopup(); // Close the popup after saving
+    }
+
+    function cancelOrder(id) {
+        fetch('/cancelAdminOrder?id=' + id)
+            .then(response => response.json())
+            .then(data => {
+
+                var check = data.status;
+
+                if (check === "success") {
+                    Toastify({
+                        text: check,
+                        duration: 3000,
+
+
+                        close: true,
+                        gravity: "bottom", // `top` or `bottom`
+                        position: "right", // `left`, `center` or `right`
+                        stopOnFocus: true, // Prevents dismissing of toast on hover
+                        style: {
+                            background: "linear-gradient(to right, #00b09b, #96c93d)",
+                        }
+                    }).showToast();
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching cart count:', error);
+            });
+
+    }
+    var page = "{{ request()->query('page') }}";
+    var filter = "{{ request()->query('filter') }}";
+    
+    function updateInfo() {
+        fetch('/vieworder?page=' + page + "&filter=" + filter)
+            .then(response => response.text())
+            .then(data => {
+
+                document.getElementById('body').innerHTML = data;
+
+                // window.location.reload();
+            })
+            .catch(error => {
+                console.error('Error fetching cart count:', error);
+            });
+
+    }
+
+    updateInfo();
+    setInterval(updateInfo, 2000);
+    document.addEventListener('DOMContentLoaded', function () {
+        const accountDropdown = document.getElementById('accountDropdown');
+        const accountDropdownMenu = accountDropdown.nextElementSibling;
+
+        // Function to open the dropdown
+        function openDropdown() {
+            accountDropdownMenu.classList.add('show');
         }
 
         function shipped(id) {

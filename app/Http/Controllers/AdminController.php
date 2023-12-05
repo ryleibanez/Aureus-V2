@@ -29,10 +29,8 @@ class AdminController extends Controller
         foreach ($order as $items) {
             $items->orderstatus = "Delivered";
             $items->save();
-
-           
         }
-        notificationModel::create(['email'=> $items->email, 'message'=> 'Order# ' .$items->transactionid. ' has been succesfully delivered!', 'status'=>'false']);
+        notificationModel::create(['email' => $items->email, 'message' => 'Order# ' . $items->transactionid . ' has been succesfully delivered!', 'status' => 'false']);
         return response()->json(['status' => 'success']);
     }
 
@@ -44,9 +42,8 @@ class AdminController extends Controller
         foreach ($order as $items) {
             $items->orderstatus = "Shipped";
             $items->save();
-            
         }
-        notificationModel::create(['email'=> $items->email, 'message'=> 'Order# ' .$items->transactionid. ' has been shipped!', 'status'=>'false']);
+        notificationModel::create(['email' => $items->email, 'message' => 'Order# ' . $items->transactionid . ' has been shipped!', 'status' => 'false']);
         return response()->json(['status' => 'success']);
     }
 
@@ -61,14 +58,10 @@ class AdminController extends Controller
             $items->deliverydate = $fee;
 
             $confirm = $items->save();
-
-
-
-           
         }
 
         if ($confirm) {
-            notificationModel::create(['email'=> $items->email, 'message'=> 'Order# ' .$items->transactionid. ' estimated delivery date: '. $fee, 'status'=>'false']);
+            notificationModel::create(['email' => $items->email, 'message' => 'Order# ' . $items->transactionid . ' estimated delivery date: ' . $fee, 'status' => 'false']);
             return response()->json(['status' => 'success']);
         } else {
             return response()->json(['status' => 'failed']);
@@ -89,11 +82,9 @@ class AdminController extends Controller
             $items->orderstatus = "Processing";
 
             if ($items->save()) {
-                
-                
-            } 
+            }
         }
-        notificationModel::create(['email'=> $items->email, 'message'=> 'Order# ' .$items->transactionid. '<br>Delivery Fee: '. $fee, 'status'=>'false']);
+        notificationModel::create(['email' => $items->email, 'message' => 'Order# ' . $items->transactionid . '<br>Delivery Fee: ' . $fee, 'status' => 'false']);
         return response()->json(['status' => 'success']);
     }
     public function CancelOrder(Request $request)
@@ -115,7 +106,7 @@ class AdminController extends Controller
                 $pdstock->save();
             }
             if ($confirm) {
-                notificationModel::create(['email'=> $items->email, 'message'=> 'Order# ' .$items->transactionid. ' has been cancelled!', 'status'=>'false']);
+                notificationModel::create(['email' => $items->email, 'message' => 'Order# ' . $items->transactionid . ' has been cancelled!', 'status' => 'false']);
                 return response()->json(['status' => 'success']);
             } else {
                 return response()->json(['status' => 'failed']);
@@ -143,28 +134,48 @@ class AdminController extends Controller
     }
 
 
-    public function viewOrder()
+    public function viewOrder(Request $request)
     {
-        $orders = Order::orderBy('created_at', 'desc')->paginate(5);
+        $filter = $request->query('filter') ?? 'All';
+
+        $validFilters = ['All', 'Pending', 'Processing', 'Shipped', 'Delivered', 'Cancelled']; // Add other valid filters
+        $filter = in_array($filter, $validFilters) ? $filter : 'All';
+
+        $orders = Order::when($filter !== 'All', function ($query) use ($filter) {
+            $query->where('orderstatus', $filter);
+        })
+            ->orderBy('created_at', 'desc')
+            ->paginate(5);
+
 
 
         return view('includes.manageorderview', compact('orders'));
     }
 
-    public function manageOrderPage()
+    public function manageOrderPage(Request $request)
     {
-        $orders = Order::orderBy('created_at', 'desc')->paginate(5);
+        $filter = $request->query('filter') ?? 'All';
+
+        $validFilters = ['All', 'Pending', 'Processing', 'Shipped', 'Delivered', 'Cancelled']; // Add other valid filters
+        $filter = in_array($filter, $validFilters) ? $filter : 'All';
+
+        $orders = Order::when($filter !== 'All', function ($query) use ($filter) {
+            $query->where('orderstatus', $filter);
+        })
+            ->orderBy('created_at', 'desc')
+            ->paginate(5);
 
         return view('manageorders', compact('orders'));
     }
 
-    function formatDescription($inputDescription) {
+    function formatDescription($inputDescription)
+    {
         // Replace line breaks with <br> tags
         $formattedDescription = nl2br($inputDescription);
-    
+
         // Replace tabs with &nbsp;
         $formattedDescription = Str::replace("\t", '&nbsp;&nbsp;&nbsp;&nbsp;', $formattedDescription);
-    
+
         return $formattedDescription;
     }
 
@@ -196,10 +207,10 @@ class AdminController extends Controller
 
             // Move the file to the storage directory
             $image->move(public_path('uploads'), $imageName);
-            $paths[] = 'uploads/'.$imageName;
+            $paths[] = 'uploads/' . $imageName;
         }
 
-     $descriptionFinal =   $this->formatDescription($request->description);
+        $descriptionFinal =   $this->formatDescription($request->description);
         // Save paths to the database
         $data = [
             'pdname' => $request->input('pdname'),
@@ -217,10 +228,10 @@ class AdminController extends Controller
         // Save the instance to the database
         $pd->save();
 
-       
+
         if ($pd) {
-        
-         
+
+
 
             return response()->json(['status' => 'success']);
         } else {
@@ -241,7 +252,7 @@ class AdminController extends Controller
         $validator = Validator::make($request->all(), [
             'pdname' => ['required', new UniqueProductExcept('products', 'pdname', $id)],
             'category' => 'required',
-           
+
             'stocks' => 'required',
             'price' => 'required',
             'description' => 'required',
@@ -254,18 +265,18 @@ class AdminController extends Controller
                 'errors' => $validator->errors(),
             ], 422); // 422 Unprocessable Entity status code indicates a validation error
         } else {
-             // Process file uploads
-        $paths = [];
-        if($request->hasFile('image')){
-        foreach ($request->file('image') as $image) {
-            // Generate a unique name for the file
-            $imageName = time() . '_' . $image->getClientOriginalName();
+            // Process file uploads
+            $paths = [];
+            if ($request->hasFile('image')) {
+                foreach ($request->file('image') as $image) {
+                    // Generate a unique name for the file
+                    $imageName = time() . '_' . $image->getClientOriginalName();
 
-            // Move the file to the storage directory
-            $image->move(public_path('uploads'), $imageName);
-            $paths[] = 'uploads/'.$imageName;
-        }
-    }
+                    // Move the file to the storage directory
+                    $image->move(public_path('uploads'), $imageName);
+                    $paths[] = 'uploads/' . $imageName;
+                }
+            }
 
             // $data = [
             //     'pdname' => $request->input('pdname'),
@@ -283,9 +294,9 @@ class AdminController extends Controller
                 $pd->pdname = $request->input('pdname');
                 $pd->category = $request->input('category');
 
-                if($request->hasFile('image')){
-                $pd->image = $paths[0];
-                $pd->mainImage = json_encode($paths);
+                if ($request->hasFile('image')) {
+                    $pd->image = $paths[0];
+                    $pd->mainImage = json_encode($paths);
                 }
                 $pd->stocks = $request->input('stocks');
                 $pd->price = $request->input('price');
