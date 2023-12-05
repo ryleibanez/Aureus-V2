@@ -67,7 +67,7 @@ select {
                             <div class="img-profile-div" id="uploadpic">
                                 <span>Profile Picture *</span><br>
                                 <img for="profile-pic" id="selected-image" class = "img-profile"
-                                    src="uploads\1698565894_uwWzejhK6hDms3jCA4mNU6.jpg">
+                                    src="uploads\defaultpfp.png">
 
                                 <input type="file" id="image-input" name="profilepic" accept="image/jpeg, image/png"
                                     style="opacity:0%;" onchange="handleImageChange()" />
