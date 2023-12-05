@@ -1,10 +1,6 @@
-@if(request()->is('adminprofile'))
-@extends('includes.adminlayout')
-
-@else
 @extends('includes.layout')
 
-@endif
+
 
 
 @section('title', 'My Profile')
