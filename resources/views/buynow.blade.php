@@ -23,9 +23,9 @@
                 <tr>
                     <td>
                         <div class="cart-info">
-                            <img src="img/1.png">
+                            <img src="{{$item->pdimage}}">
                             <div>
-                                <p id="price">{{ $item->pdname }}</p>`
+                                <p id="price">{{ $item->pdname }}</p>
                                 <small>Price: PHP {{ number_format($item->price, 2, '.', ',') }}</small>
                                 <br>
 

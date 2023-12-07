@@ -3,7 +3,7 @@
 @section('content')
 
 
-<header class="header">
+{{-- <header class="header">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-md-12">
@@ -16,7 +16,7 @@
             </div>
         </div>
     </div>
-</header>
+</header> --}}
 
     <!-- Checkout-Page -->
     <div class="page-checkout u-s-p-t-80">
@@ -24,7 +24,8 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12">
                     <!-- First-Accordion -->
-
+                    <a href="{{ route('index') }}" class="back-button">&#8592; Back</a>
+                    <br><br><br>
                     <!-- First-Accordion /- -->
                     <!-- Second Accordion -->
 

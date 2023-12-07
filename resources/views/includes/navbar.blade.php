@@ -1,4 +1,4 @@
-<style>
+{{-- <style>
     body,
     html {
         height: 100%;
@@ -13,13 +13,11 @@
         display: flex;
         flex-direction: column;
     }
-</style>
+</style> --}}
 
-
-<nav class="navbar">
-    <div class="logo">
-        <a href="{{ url('/') }}">Your Logo</a>
-    </div>
+<link rel="stylesheet" href="{{ asset('style.css') }}"> 
+<nav >
+    
     <ul id="MenuItems">
         <li><a href="{{ url('/') }}">Home</a></li>
         <li><a href="{{ url('/products') }}">Products</a></li>
@@ -31,3 +29,6 @@
         <i class="fas fa-search"></i>
     </div>
 </nav>
+
+
+

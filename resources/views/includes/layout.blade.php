@@ -7,8 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aureus | @yield('title')</title>
     <link rel="stylesheet" href="{{ asset('style.css') }}">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -18,41 +17,42 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 
     @if (request()->is(['myaccount', 'myprofile', 'editprofile', 'myaddress', 'editaddress', 'myorders', 'addAddress']))
-    <!--====== Google Font ======-->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet">
+        <!--====== Google Font ======-->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet">
 
-    <!--====== Vendor Css ======-->
-    <link rel="stylesheet" href="{{ asset('css2/css/vendor.css') }}">
+        <!--====== Vendor Css ======-->
+        <link rel="stylesheet" href="{{ asset('css2/css/vendor.css') }}">
 
-    <!--====== Utility-Spacing ======-->
-    <link rel="stylesheet" href="css2/css/utility.css">
-    <link rel="stylesheet" href="css2/css/app.css">
+        <!--====== Utility-Spacing ======-->
+        <link rel="stylesheet" href="css2/css/utility.css">
+        <link rel="stylesheet" href="css2/css/app.css">
     @endif
 
     @if (request()->is(['checkout', 'checkoutorder', 'cartcheckout']))
-    <!-- Google Fonts for Banners only -->
-    <link href="https://fonts.googleapis.com/css?family=Raleway:400,800" rel="stylesheet">
-    <!-- Bootstrap 4 -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <!-- Font Awesome 5 -->
-    <link rel="stylesheet" href="css/fontawesome.min.css">
-    <!-- Ion-Icons 4 -->
-    <link rel="stylesheet" href="css/ionicons.min.css">
-    <!-- Animate CSS -->
-    <link rel="stylesheet" href="css/animate.min.css">
-    <!-- Owl-Carousel -->
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <!-- Jquery-Ui-Range-Slider -->
-    <link rel="stylesheet" href="css/jquery-ui-range-slider.min.css">
-    <!-- Utility -->
-    <link rel="stylesheet" href="css/utility.css">
-    <!-- Main -->
-    <link rel="stylesheet" href="css/bundle.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet" />
+        <!-- Google Fonts for Banners only -->
+        <link href="https://fonts.googleapis.com/css?family=Raleway:400,800" rel="stylesheet">
+        <!-- Bootstrap 4 -->
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <!-- Font Awesome 5 -->
+        <link rel="stylesheet" href="css/fontawesome.min.css">
+        <!-- Ion-Icons 4 -->
+        <link rel="stylesheet" href="css/ionicons.min.css">
+        <!-- Animate CSS -->
+        <link rel="stylesheet" href="css/animate.min.css">
+        <!-- Owl-Carousel -->
+        <link rel="stylesheet" href="css/owl.carousel.min.css">
+        <!-- Jquery-Ui-Range-Slider -->
+        <link rel="stylesheet" href="css/jquery-ui-range-slider.min.css">
+        <!-- Utility -->
+        <link rel="stylesheet" href="css/utility.css">
+        <!-- Main -->
+        <link rel="stylesheet" href="css/bundle.css">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet" />
     @endif
     <style>
         .search-container {
@@ -105,10 +105,8 @@
             left: 0;
             width: 100%;
             background-color: #fff;
-
             display: flex;
             align-items: center;
-
             z-index: 1000;
         }
 
@@ -116,6 +114,7 @@
             width: 125px;
             height: auto;
         }
+
 
         .menu-icon {
             cursor: pointer;
@@ -205,6 +204,15 @@
             /* Set a high z-index value */
         }
 
+        .menu-home {
+            align-content: center;
+            list-style-type: none;
+            margin-bottom: 1.15rem;
+            padding: 0;
+
+            align-items: center;
+        }
+
         .toast {
             max-width: 350px;
             background-color: #343a40;
@@ -253,89 +261,105 @@
             margin-top: 10px;
         }
 
+        @media (max-width: 768px) {
+            .col-2 {
+                margin-top: 4rem;
+                align-items: center;
+                display: block;
+            }
+
+            .row1 {
+
+                text-align: center;
+            }
+        }
     </style>
 
 </head>
 
 <body>
-    @include('includes.navbar')
+
     <button type="button" class="btn btn-primary" id="myButton" onclick="playAudio()"
         style="display: none;">Button</button>
     @if (request()->is(['checkout', 'checkoutorder', 'cartcheckout']))
     @else
-    <div class="header">
-        <div class="container1">
-            <div class="navbar">
-                <div class="logo">
-                    <a href="/"><img src="{{ asset('images/main-logo/header-logo.png') }}" alt="logo"
-                            style="width: 100px !important;"></a>
-                </div>
+        {{-- @include('includes.navbar') --}}
+        <div class="header">
+            <div class="container1">
+                <div class="navbar">
 
-                <nav>
-                    <ul id="MenuItems">
-                        <li><a href="{{ route('index') }}">Home</a></li>
-                        <li><a href="{{ route('products') }}">Products</a></li>
-                        <li><a href="{{ route('category') }}">Categories</a></li>
-                        <li><a href="{{ route('about') }}">About us</a></li>
+                    <div class="logo">
+                        <a href="/"><img src="{{ asset('images/main-logo/header-logo.png') }}" alt="logo"
+                                style="width: 100px !important;"></a>
+                    </div>
 
-                        @auth
-                        <li>
-                            <a href="{{ route('myaccount') }}">Account</a>
+                    <nav>
+                        <div @if (request()->is(['/', 'homepage', 'index', 'myaccount', 'categoryProduct', 'searchProduct'])) class="menu-home" @endif>
+                            <ul id="MenuItems" style="">
+                                <li><a href="{{ route('index') }}">Home</a></li>
+                                <li><a href="{{ route('products') }}">Products</a></li>
+                                <li><a href="{{ route('category') }}">Categories</a></li>
+                                <li><a href="{{ route('about') }}">About us</a></li>
 
-                        </li>
-                        @endauth
-                        @auth
+                                @auth
+                                    <li>
+                                        <a href="{{ route('myaccount') }}">Account</a>
+
+                                    </li>
+                                @endauth
+                                @auth
 
 
-                        <li>
-                            <a>Hi, {{ auth()->user()->fname }}</a>
+                                    <li>
+                                        <a>Hi, {{ auth()->user()->fname }}</a>
 
-                        </li>
-                        <li>
-                            <a href="{{ route('logout') }}">Logout</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('logout') }}">Logout</a>
 
-                        </li>
-                        @else
-                        <li>
-                            <a href="{{ Route('signin') }}">Login</a>
+                                    </li>
+                                @else
+                                    <li>
+                                        <a href="{{ Route('signin') }}">Login</a>
 
-                        </li>
-                        @endauth
+                                    </li>
+                                @endauth
 
-                    </ul>
-                </nav>
-
-                <div class="search-icon" onclick="openSearchOverlay()">
-                    <a href="#">
-                        <i class="fas fa-search search-icon"></i>
-                    </a>
-                </div>
-
-                <div class="search-overlay" id="searchOverlay" onclick="closeSearchOverlay()">
-                    <form method="get" action="{{ URL('/searchProduct') }}">
-                        <div class="search-box" onclick="event.stopPropagation();">
-
-                            <input type="text" placeholder="Search..." name="search">
-                            &nbsp;<i class="fas fa-search search-icon"></i>
+                            </ul>
                         </div>
-                    </form>
-                </div>
-                @auth
-                <div id="view-cart">
-                    <a href="{{ route('mycart') }}" class="cart-icon">
-                        <img src="{{ asset('images/cart.png') }}" width="30px" height="30px">
-                        <span class="cart-count"></span> <!-- Replace '5' with the actual cart count -->
-                    </a>
-                </div>
-                @endauth
+                    </nav>
 
-                <img src="images/menu.png" class="menu-icon" onclick="menutoggle()">
+                    <div class="search-icon" onclick="openSearchOverlay()">
+                        <a href="#">
+                            <i class="fas fa-search search-icon"></i>
+                        </a>
+                    </div>
+
+                    <div class="search-overlay" id="searchOverlay" onclick="closeSearchOverlay()">
+                        <form method="get" action="{{ URL('/searchProduct') }}">
+                            <div class="search-box" onclick="event.stopPropagation();">
+
+                                <input type="text" placeholder="Search..." name="search">
+                                &nbsp;<i class="fas fa-search search-icon"></i>
+                            </div>
+                        </form>
+                    </div>
+                    @auth
+                        <div id="view-cart">
+                            <a href="{{ route('mycart') }}" class="cart-icon">
+                                <img src="{{ asset('images/cart.png') }}" width="30px" height="30px">
+                                <span class="cart-count"></span> <!-- Replace '5' with the actual cart count -->
+                            </a>
+                        </div>
+                    @endauth
+
+                    <img src="images/menu.png" class="menu-icon" onclick="menutoggle()">
+                </div>
+                @yield('slider')
+
+
             </div>
-            @yield('slider')
-
-
         </div>
-    </div>
     @endif
 
     <!-- Feadtued Categories -->
@@ -452,7 +476,7 @@
         setInterval(checkOrders, 1500);
 
 
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             const accountDropdown = document.getElementById('accountDropdown');
             const accountDropdownMenu = accountDropdown.nextElementSibling;
             updateCartCount();
@@ -467,7 +491,7 @@
             }
 
             // Click event listener
-            accountDropdown.addEventListener('click', function (e) {
+            accountDropdown.addEventListener('click', function(e) {
                 e.preventDefault();
                 if (accountDropdownMenu.classList.contains('show')) {
                     closeDropdown();
@@ -481,7 +505,7 @@
             accountDropdownMenu.addEventListener('mouseleave', closeDropdown);
 
             // Close the dropdown if clicked outside
-            document.addEventListener('click', function (e) {
+            document.addEventListener('click', function(e) {
                 if (!accountDropdownMenu.contains(e.target) && !accountDropdown.contains(e.target)) {
                     closeDropdown();
                 }
@@ -529,15 +553,15 @@
             document.getElementById("searchOverlay").style.display = "none";
         }
 
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             var toast = document.querySelector('.toast');
             var closeButton = toast.querySelector('.close');
 
-            closeButton.addEventListener('click', function () {
+            closeButton.addEventListener('click', function() {
                 toast.classList.remove('show');
             });
 
-            setTimeout(function () {
+            setTimeout(function() {
                 toast.classList.add('show');
             }, 1000);
         });

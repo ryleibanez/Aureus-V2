@@ -82,7 +82,7 @@
     <h2>Orders</h2>
     <table>
         <thead>
-            <tr>
+            <tr style="text-align: center; align-content: center; align-items: center;">
                 <th>Order ID</th>
                 <th>Customer Name</th>
                 <th>Order Date</th>

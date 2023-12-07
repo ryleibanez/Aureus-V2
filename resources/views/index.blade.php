@@ -1,7 +1,20 @@
 @extends('includes.layout')
 @section('title', 'Home Page');
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+<style>
+    /* Add any additional styles here */
+    .swiper-container {
+        width: 100%;
+        height: 100%;
+    }
 
+    .swiper-slide img {
+        width: 100%;
+        height: auto;
+    }
 
+    
+</style>
 @section('slider')
     <div class="row1">
         <div class="col-2">
@@ -14,7 +27,15 @@
         </div>
 
         <div class="col-2">
-            <img src="images/perfumehome.png">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img src="images/main-slider/img1.png" alt="Perfume 1"></div>
+                    <div class="swiper-slide"><img src="images/main-slider/img2.png" alt="Perfume 2"></div>
+                    <div class="swiper-slide"><img src="images/main-slider/img3.png" alt="Perfume 3"></div>
+                    <div class="swiper-slide"><img src="images/main-slider/img4.png" alt="Perfume 4"></div>
+                </div>
+                
+            </div>
         </div>
     </div>
 @endsection
@@ -45,7 +66,7 @@
                         <img src="images/unisex.png">
                     </a>
                 </div>
-               
+
             </div>
         </div>
     </div>
@@ -59,7 +80,8 @@
         <div class="row1">
             @foreach ($product as $pd)
                 <div class="col-4">
-                    <a href="{{ URL('/viewproduct?id=' . $pd->id) }}"><img src="{{ $pd->image }}" style="width: 250px; height: 250px;"></a>
+                    <a href="{{ URL('/viewproduct?id=' . $pd->id) }}"><img src="{{ $pd->image }}"
+                            style="width: 250px; height: 250px;"></a>
                     <h4>{{ $pd->pdname }}</h4>
                     <h5>{{ $pd->category }}</h5>
 
@@ -74,13 +96,33 @@
 
 
     </div>
-
+    <!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
     <script>
-        
+        var swiper = new Swiper('.swiper-container', {
+            slidesPerView: 1,
+            spaceBetween: 0, 
+            loop: true,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+            effect: 'fade', 
+            fadeEffect: {
+                crossFade: true
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+        });
+    </script>
+
+    <script>
         var session = "{{ session('errorcheckout') }}";
         var search = "{{ session('search') }}";
-        var admin = "{{ session ('admincheck')}}";
+        var admin = "{{ session('admincheck') }}";
 
         if (session) {
             Toastify({

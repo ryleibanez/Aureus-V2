@@ -26,8 +26,6 @@
 </style>
 
 
-
-
     <!-- All Products -->
 
     <div class="small-container">

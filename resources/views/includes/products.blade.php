@@ -26,7 +26,7 @@
                     <td>{{$items->category}}</td>
                     <td>{{$items->stocks}}</td>
                     <td>PHP {{number_format($items->price,2,'.',',')}}</td>
-                    <td><button class="btn" onclick="window.location.href='{{URL('/editProduct?id='.$items->id.'')}}'">Edit</button> <button class="btn" onclick="deleteProduct('{{$items->id}}')">Delete</button></td>
+                    <td><div style=""><button class="btn" onclick="window.location.href='{{URL('/editProduct?id='.$items->id.'')}}'">Edit</button> <button class="btn" onclick="deleteProduct('{{$items->id}}')">Delete</button> </div></td>
                 </tr>
                 @endforeach
                 <!-- Add more rows as needed -->

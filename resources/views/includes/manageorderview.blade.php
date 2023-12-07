@@ -33,7 +33,7 @@
         <td>
             @if ($count === 1)
                 @if ($order->orderstatus === 'Pending')
-                    <div style="display: inline-block">
+                    <div style="align-items: center; text-align: center">
 
                         <button class="btn" onclick="cancelOrder({{ $order->transactionid }})">Cancel</button> <button
                             class="btn" onclick="openPopup({{ $order->transactionid }})">Set Delivery Fee</button>

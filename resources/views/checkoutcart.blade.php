@@ -2,41 +2,19 @@
 @section('title', 'checkout')
 @section('content')
 
-<link rel="stylesheet" href="style.css">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
-<!-- Google Fonts for Banners only -->
-<link href="https://fonts.googleapis.com/css?family=Raleway:400,800" rel="stylesheet">
-<!-- Bootstrap 4 -->
-<link rel="stylesheet" href="css/bootstrap.min.css">
-<!-- Font Awesome 5 -->
-<link rel="stylesheet" href="css/fontawesome.min.css">
-<!-- Ion-Icons 4 -->
-<link rel="stylesheet" href="css/ionicons.min.css">
-<!-- Animate CSS -->
-<link rel="stylesheet" href="css/animate.min.css">
-<!-- Owl-Carousel -->
-<link rel="stylesheet" href="css/owl.carousel.min.css">
-<!-- Jquery-Ui-Range-Slider -->
-<link rel="stylesheet" href="css/jquery-ui-range-slider.min.css">
-<!-- Utility -->
-<link rel="stylesheet" href="css/utility.css">
-<!-- Main -->
-<link rel="stylesheet" href="css/bundle.css">
-<header class="header">
+
+{{-- <header class="header">
     <div class="container">
         <div class="col-lg-12 col-md-12">
             <div class="logo-wrapper">
                 <a href="#" class="logo">
-                    <img src="images/main-logo/header-logo.png" alt="Your Logo">
+                    <img src="{{asset('images/main-logo/header-logo.png')}}" alt="Your Logo">
                 </a>
                 
             </div>
         </div>
     </div>
-</header>
+</header> --}}
 <style>
     html,
     body {

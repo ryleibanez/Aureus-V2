@@ -232,6 +232,17 @@
             text-align: center;
             line-height: 20px;
         }
+
+        @media(max-width: 768px){
+            .col-2{
+                margin-top: 3.5rem;   
+                text-align: center;
+            }
+
+            .row1{
+                text-align: center;
+            }
+        }
     </style>
 
 </head>

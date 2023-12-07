@@ -93,6 +93,10 @@ select {
                                     <span class="text-danger"  style="display: none;">{{ $message }}</span>
                                 @enderror
 
+                                @error('profilepic')
+                                <span class="text-danger"  style="display: none;">{{ $message }}</span>
+                            @enderror
+
                             </div>
 
                             <div class="form-group">
